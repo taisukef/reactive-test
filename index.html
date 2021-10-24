@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+
+<h1>reactive data demo</h1>
+
+<script type="module">
+import { BitCheckboxes } from "./bit-checkboxes.js";
+import { ReactiveInput } from "./reactive-input.js";
+import { Data } from "./Data.js";
+import { sleep } from "https://js.sabae.cc/sleep.js";
+
+onload = async () => {
+  const d = new Data();
+
+  document.body.appendChild(new BitCheckboxes(d));
+  document.body.appendChild(new ReactiveInput(d));
+
+  for (let i = 0; i < 256; i++) {
+    d.value = i;
+    await sleep(100);
+  }
+};
+
+</script>
